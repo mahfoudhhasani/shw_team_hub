@@ -1,0 +1,29 @@
+# .github/workflows/deepseek-workflow.yml
+
+name: DeepSeek Auto Task
+
+on:
+  workflow_dispatch:  # تشغيل يدوي من GitHub
+
+jobs:
+  deepseek_task:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 🧰 Checkout repository
+      uses: actions/checkout@v3
+
+    - name: 🧠 Instruction to DeepSeek
+      run: |
+        echo "==========================="
+        echo "🔍 TASK INSTRUCTIONS"
+        echo "==========================="
+        echo "➡️ Please focus ONLY on the directory: apps/"
+        echo "➡️ Read and understand the structure of apps/"
+        echo "➡️ Your job is to assist with code generation, refactoring, and improvements ONLY inside apps/"
+        echo "➡️ Ignore any folders outside 'apps/' unless explicitly instructed."
+        echo "➡️ Always commit back your changes to GitHub with descriptive messages."
+        echo "==========================="
+
+    - name: ✅ Confirm readiness
+      run: echo "Ready for DeepSeek to begin working inside apps/"
