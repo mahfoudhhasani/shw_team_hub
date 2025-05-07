@@ -1,0 +1,29 @@
+name: DeepSeek Auto Agent
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-deepseek:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run DeepSeek Agent
+        uses: deepseek-ai/agent-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          entry_point: "src/"
+          instructions: |
+            🎯 المهام:
+            - أنشئ ملفات واجهة مستخدم للأطفال داخل مجلد `src/frontend/`
+            - استخدم HTML + TailwindCSS أو Bootstrap
+            - أضف صفحة رئيسية فيها: شعار المشروع، وصف قصير، زر دخول، زر تسجيل
+            - لا تخرج من مجلد `src/`، وضع كل الأكواد بداخله فقط.
+            - لا تكرر الملفات، وحافظ على تنسيق نظيف
+
+            ✅ بعد تنفيذ المهمة:
+            - قم بإنشاء Pull Request تلقائيًا للمراجعة
+
